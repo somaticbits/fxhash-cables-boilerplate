@@ -12,7 +12,7 @@ If you are looking for a boilerplate that handles the compression to a ZIP file 
 
 Clone the repository on your machine and move to the directory
 ```sh
-$ git clone https://github.com/fxhash/fxhash-simple-boilerplate.git your_folder && cd your_folder
+$ git clone https://github.com/somaticbits/fxhash-cables-boilerplate.git your_folder && cd your_folder
 ```
 
 # fxhash snippet
