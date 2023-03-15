@@ -38,53 +38,52 @@
     <!-- if you need to import js scripts do it here -->
   </head>
   <body>
-    <canvas id="glcanvas" tabindex="1"></canvas>
+<canvas id="glcanvas" tabindex="1"></canvas>
 
-    <libs/>
-    <script type="text/javascript" src="./js/patch.js" async></script>
-    <corelibs/>
-	<script>
-	function clamp(input, min, max) {
-		return input < min ? min : input > max ? max : input;
-	}
+<libs/>
+<script type="text/javascript" src="./js/patch.js" async></script>
+<corelibs/>
 
-	function map(current, in_min, in_max, out_min, out_max) {
-		const mapped = ((current - in_min) * (out_max - out_min)) / (in_max - in_min) + out_min;
-		return clamp(mapped, out_min, out_max);
-  	}
-	
-	// Set your variables here
-	const rand = fxrand()
+<script>
+  function clamp(input, min, max) {
+    return input < min ? min : input > max ? max : input;
+  }
+  function map(current, in_min, in_max, out_min, out_max) {
+    const mapped = ((current - in_min) * (out_max - out_min)) / (in_max - in_min) + out_min;
+    return clamp(mapped, out_min, out_max);
+  }
 
-	
-  	// Disable rubberband effect on mobile devices
-  	document.getElementById('glcanvas').addEventListener('touchmove', (e)=>{ e.preventDefault(); }, false);
+  const featureVar = Math.round(map(fxrand(), 0, 1, 0, 900))
+
+  // disable rubberband effect on mobile devices
+  document.getElementById('glcanvas').addEventListener('touchmove', (e)=>{ e.preventDefault(); }, false);
 
 
-  	function patchInitialized(patch) {
-  	}
+  function patchInitialized(patch) {
+  }
 
-  	function patchFinishedLoading(patch) {
-    	// The patch is ready now, all assets have been loaded
-	}
+  function patchFinishedLoading(patch) {
+    // The patch is ready now, all assets have been loaded
+  }
 
-	// Add the fxhash features here
-	window.$fxhashFeatures = {
-		'Rand': rand,
-	}
 
-	document.addEventListener('CABLES.jsLoaded', function (event) {
-		CABLES.patch = new CABLES.Patch({
-			patch: CABLES.exportedPatch,
-			prefixAssetPath: '',
-			glCanvasId: 'glcanvas',
-			glCanvasResizeToWindow: true,
-			onPatchLoaded: patchInitialized,
-			onFinishedLoading: patchFinishedLoading,
-			canvas: {preserveDrawingBuffer: true}
-		});
-	// Set the variables used in Cables
-	CABLES.patch.setVariable('rand',rand)
-	});
-  </body>
+  window.$fxhashFeatures = {
+    'featureName': featureVar,
+  }
+
+  document.addEventListener('CABLES.jsLoaded', function (event) {
+    CABLES.patch = new CABLES.Patch({
+      patch: CABLES.exportedPatch,
+      prefixAssetPath: '',
+      glCanvasId: 'glcanvas',
+      glCanvasResizeToWindow: true,
+      onPatchLoaded: patchInitialized,
+      onFinishedLoading: patchFinishedLoading,
+      canvas: {preserveDrawingBuffer: true}
+    });
+    CABLES.patch.setVariable('featureVar', featureVar)
+  });
+
+</script>
+</body>
 </html>
