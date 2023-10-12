@@ -10,8 +10,8 @@ const sp = new URLSearchParams(window.location.search)
 
 // this is how features can be defined
 $fx.features({
-  "Red x": Math.floor($fx.rand() * 10),
-  "Red y": $fx.rand() > 0.5,
+  "Red x": 200,
+  "Red y": 100,
 })
 
 function main() {
@@ -26,8 +26,10 @@ function main() {
     // The patch is ready now, all assets have been loaded
   }
 
-  const redx = $fx.features["Red x"]
-  const redy = $fx.features["Red y"]
+  const redx = $fx.getFeature("Red x")
+  const redy = $fx.getFeature("Red y")
+  console.log("redx", redx)
+  console.log("redy", redy)
 
   document.addEventListener('CABLES.jsLoaded', function (event) {
     CABLES.patch = new CABLES.Patch({
