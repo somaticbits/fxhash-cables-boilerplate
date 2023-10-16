@@ -1,3 +1,29 @@
+# Cables fx(hash) boilerplate
+
+A boilerplate to integrate cables.gl into the new fx(hash) boilerplate.
+
+For instructions about to set up the fx(hash) boilerplate and everything else, please check below. This is the original documentation and covers all the necessary bases to develop a generative token within the given framework.
+
+## Cables.gl + fx(hash) boilerplate specifics
+
+Most of the action happens in the `src/index.js` file.
+
+### Features
+
+To define features, you use `$fx.features({})`. You can set features like this:
+`$fx.features({"My feature": fx.rand(), "Another feature": fx.rand() * 5})`.
+
+To retrieve a feature and set a variable in Cables.gl, follow these steps:
+`CABLES.patch.setVariable("My_feature", $fx.getFeature("My feature"))`
+
+In this code, `"My_feature"` is the name of the variable in Cables.gl. It's a good practice to avoid spaces in variable names to prevent potential issues later on.
+
+The line `$fx.getFeature("My feature")` is used to fetch the value that you previously defined in the `$fx.features` function, where you set it using `$fx.features({"My feature": fx.rand(), "Another feature": fx.rand() * 5})`. This retrieved value is then used to update a variable in Cables.gl.
+
+### Params
+
+TBD
+
 # fx(hash) boilerplate 2.0
 
 A boilerplate to automate and ease the creation of Generative Tokens on fx(hash) using fx(params).
