@@ -40,7 +40,7 @@ To define params, you use `$fx.params([{}])`. You can set features like this:
 To retrieve a param and set a param variable in Cables.gl, follow these steps:
 `CABLES.patch.setVariable("number_id", $fx.getParam("number_id"))`
 
-The fx(hash) params have various specific types - [see below](#-fx(params)-types). Not all types translate directly to Cables.gl types.
+The fx(hash) params have various specific types - [see below](#fx(params)-types). Not all types translate directly to Cables.gl types.
 Here's a more detailed overview:
 
 - `number`: `Number` aka float64 -> Cables.gl: `number`
