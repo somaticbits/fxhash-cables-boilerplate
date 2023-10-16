@@ -23,7 +23,8 @@ The line `$fx.getFeature("feature one")` is used to fetch the value that you pre
 ### Params
 
 To define params, you use `$fx.params([{}])`. You can set features like this:
-```$fx.params([
+``` javascript
+$fx.params([
 	{
 		id: "number_id",
 		name: "A number/float64",
