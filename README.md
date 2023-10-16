@@ -11,18 +11,45 @@ Most of the action happens in the `src/index.js` file.
 ### Features
 
 To define features, you use `$fx.features({})`. You can set features like this:
-`$fx.features({"My feature": fx.rand(), "Another feature": fx.rand() * 5})`.
+`$fx.features({"feature one": fx.rand(), "feature two": fx.rand() * 5})`.
 
-To retrieve a feature and set a variable in Cables.gl, follow these steps:
-`CABLES.patch.setVariable("My_feature", $fx.getFeature("My feature"))`
+To retrieve a feature and set a feature variable in Cables.gl, follow these steps:
+`CABLES.patch.setVariable("feature_one", $fx.getFeature("feature one"))`
 
-In this code, `"My_feature"` is the name of the variable in Cables.gl. It's a good practice to avoid spaces in variable names to prevent potential issues later on.
+In this code, `"feature_one"` is the name of the variable in Cables.gl. It's a good practice to avoid spaces in variable names to prevent potential issues later on.
 
-The line `$fx.getFeature("My feature")` is used to fetch the value that you previously defined in the `$fx.features` function, where you set it using `$fx.features({"My feature": fx.rand(), "Another feature": fx.rand() * 5})`. This retrieved value is then used to update a variable in Cables.gl.
+The line `$fx.getFeature("feature one")` is used to fetch the value that you previously defined in the `$fx.features` function, where you set it using `$fx.features({"feature one": fx.rand(), "feature two": fx.rand() * 5})`. This retrieved value is then used to update a variable in Cables.gl.
 
 ### Params
 
-TBD
+To define params, you use `$fx.params([{}])`. You can set features like this:
+```$fx.params([
+	{
+		id: "number_id",
+		name: "A number/float64",
+		type: "number",
+		//default: Math.PI,
+		options: {
+			min: 1,
+			max: 10,
+			step: 0.0001,
+		},
+	},...])
+```
+
+To retrieve a param and set a param variable in Cables.gl, follow these steps:
+`CABLES.patch.setVariable("number_id", $fx.getParam("number_id"))`
+
+The fx(hash) params have various specific types - [see below](#-fx(params)-types). Not all types translate directly to Cables.gl types.
+Here's a more detailed overview:
+
+- `number`: `Number` aka float64 -> Cables.gl: `number`
+- `bigint`: `BigInt` aka int64 -> Cables.gl: not used - TBD
+- `boolean`: `boolean` -> Cables.gl: `string`
+- `color`: Color in 8-hexdigit and abbreviations -> Cables.gl: `string`
+- `string`: String with max 64 characters -> Cables.gl: `string`
+- `select`: Selection of provided options options -> Cables.gl: `array` of options
+
 
 # fx(hash) boilerplate 2.0
 
