@@ -6,7 +6,7 @@ For instructions about to set up the fx(hash) boilerplate and everything else, p
 
 ## Cables.gl + fx(hash) boilerplate specifics
 
-Most of the action happens in the `src/index.js` file.
+Most of the action happens in the `src/index.js` file. Download your patch from Cables.gl and put the `patch.js` file into the `project/public` folder. There is already a sample project inside it, just replace it. You can find the Cables.gl patch here: [Cables.gl - fxhash boilerplate](https://cables.gl/p/8i54GI)
 
 ### Features
 
@@ -45,11 +45,11 @@ The fx(hash) params have various specific types - [see below](#fxparams-types). 
 Here's a more detailed overview:
 
 - `number`: `Number` aka float64 -> Cables.gl: `number`
-- `bigint`: `BigInt` aka int64 -> Cables.gl: not used - TBD
+- `bigint`: `BigInt` aka int64 -> Cables.gl: `number`
 - `boolean`: `boolean` -> Cables.gl: `string`
 - `color`: Color in 8-hexdigit and abbreviations -> Cables.gl: `string`
 - `string`: String with max 64 characters -> Cables.gl: `string`
-- `select`: Selection of provided options options -> Cables.gl: `array` of options
+- `select`: Selection of provided options options -> Cables.gl: `string`
 
 
 # fx(hash) boilerplate 2.0
