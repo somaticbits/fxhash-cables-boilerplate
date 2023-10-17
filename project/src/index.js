@@ -21,7 +21,6 @@ $fx.params([
 			step: 0.0001,
 		},
 	},
-
 	{
 		id: "bigint_id",
 		name: "A bigint",
